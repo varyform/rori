@@ -15,9 +15,18 @@ Gem::Specification.new do |spec|
     wallpapers included. The host app keeps its own controllers and views.
   TEXT
   spec.license     = "MIT"
+  spec.homepage    = "https://github.com/varyform/rori"
   spec.required_ruby_version = ">= 3.4"
 
-  spec.files = Dir["{app,config,lib,vendor}/**/*", "README.md"]
+  spec.metadata = {
+    "homepage_uri" => spec.homepage,
+    "source_code_uri" => spec.homepage,
+    "changelog_uri" => "#{spec.homepage}/blob/main/CHANGELOG.md",
+    "bug_tracker_uri" => "#{spec.homepage}/issues",
+    "rubygems_mfa_required" => "true"
+  }
+
+  spec.files = Dir["{app,config,lib,vendor}/**/*", "README.md", "LICENSE", "CHANGELOG.md"]
   spec.require_paths = [ "lib" ]
 
   spec.add_dependency "rails", ">= 8.0"

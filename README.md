@@ -1,12 +1,14 @@
 # Rori
 
+[![CI](https://github.com/varyform/rori/actions/workflows/ci.yml/badge.svg)](https://github.com/varyform/rori/actions/workflows/ci.yml)
+
 A niri-style window manager for Rails pages — a "desk" of windows. Every
 page opens as a window in endlessly scrolling column strips, one strip per workspace; ⌘K and a
 drop-down terminal (`` ` ``) run one fuzzy-matched command tree; a keymap
 with a configurable modifier (⌘ in a native shell) and optional hover keys
 drive the windows. Ghostty themes and Unsplash wallpapers included.
 
-![A workspace with a users list, two users stacked in one column, and a service running off the right edge](docs/screenshots/desk.webp)
+![From an empty desk: ⌘K opens pages as windows, focus moves along the strip, the overview zooms out, and the terminal switches the theme](docs/demo.webp)
 
 A Rails engine (not isolated): it wraps the host's own controllers and views.
 
@@ -15,6 +17,11 @@ configuration, window options on pages, a server-side command with a
 background job, and a Tauri macOS wrapper.
 
 ## A tour
+
+**Windows in strips**: columns of any width, windows stacked inside them, the
+strip running off the edges; one strip per workspace.
+
+![A workspace with a users list, two users stacked in one column, and a service running off the right edge](docs/screenshots/desk.webp)
 
 **⌘K** matches whole paths through nested lists: `uthen` finds UI › Theme › Nord.
 
@@ -46,14 +53,36 @@ cursor stays in the field you're typing in.
 
 ## Requirements
 
-Rails 8 with Propshaft, importmap, Turbo and Stimulus; HAML.
+Rails 8 with Propshaft, importmap, Turbo and Stimulus.
+
+Your app's views stay whatever they are — ERB, Phlex, anything. Only the
+engine's own views are written in HAML, so the `haml` gem comes along as a
+dependency; you never have to write a line of it.
+
+> **Why HAML?** The desk's views are nothing but nesting, and HAML makes
+> nesting the syntax: no closing tags, no towers of `<% end %>`. The ERB
+> version had more angle brackets than a Rust signature with lifetimes —
+> `fn render<'a, T: View + 'a>(v: &'a T) -> Result<Box<dyn Html + 'a>, Error>`
+> — and nobody should have to read that at 2 a.m.
 
 ## Wiring it into an app
 
 ```ruby
 # Gemfile
 gem "rori", github: "varyform/rori", branch: "main"
+```
 
+```sh
+bundle install
+bin/rails g rori:install
+```
+
+The generator adds `config/initializers/rori.rb`, includes `Rori::Windowed`
+in `ApplicationController`, draws the desk's routes (and makes the blank desk
+the root, unless you have one), and registers the Stimulus controllers. Run
+it again any time; steps already in place are skipped. By hand, that's:
+
+```ruby
 # app/controllers/application_controller.rb — every page renders as a window
 class ApplicationController < ActionController::Base
   include Rori::Windowed
@@ -235,6 +264,15 @@ Themes set the `--color-*` tokens, so a theme picked in UI › Theme wins over
 level-1 colours; use level 2 (`--rori-ink`, `--rori-surface`…) for colours a
 theme mustn't change.
 
-## Tests
+## Development
 
-The host app's test suite covers the desk (`test/{controllers,models}/rori`).
+```sh
+bundle install
+bundle exec rake test     # models, controllers, the generator, against test/dummy
+bundle exec rubocop
+bin/rails server          # the dummy app, for poking at the desk
+```
+
+To work on the gem inside a real app, point Bundler at your checkout:
+`bundle config set --local local.rori /path/to/rori` (the app's Gemfile keeps
+the GitHub source). Releases: see `RELEASING.md`.

@@ -1,0 +1,22 @@
+# The desk (https://github.com/varyform/rori). Every option, with its
+# default, is documented in the gem's lib/rori.rb.
+Rori.configure do |rori|
+  rori.app_name = "<%= Rails.application.class.module_parent_name.titleize %>"
+
+  # Models whose most recently updated records are listed in ⌘K (each needs
+  # updated_at, a show route and a readable to_s).
+  # rori.records = %w[ User Project ]
+
+  # Blender-style bare keys on the window under the pointer.
+  # rori.hover_keys = true
+
+  # Background photos from Unsplash (or your own: rori.wallpapers_folder).
+  # rori.wallpapers = true
+
+  # A command that runs on the server, labelled by
+  # rori.commands.custom.reindex_search in your locale:
+  # rori.command :reindex_search, confirm: true do
+  #   SearchReindexJob.perform_later
+  #   "Reindexing…"
+  # end
+end
