@@ -1,0 +1,7 @@
+groceries:
+  title: Groceries
+  body: Milk, eggs, bread.
+
+ideas:
+  title: Ideas
+  body: A window manager on top of Turbo frames.

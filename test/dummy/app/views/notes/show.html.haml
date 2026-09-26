@@ -1,0 +1,3 @@
+- content_for :title, @note.title
+%p= @note.body
+= rori_link_to t("notes.edit.title"), edit_note_path(@note)

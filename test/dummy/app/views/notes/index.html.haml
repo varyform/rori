@@ -1,0 +1,5 @@
+- window size: :lg
+%ul
+  - @notes.each do |note|
+    %li= rori_link_to note.title, note
+= rori_link_to t("notes.new.title"), new_note_path

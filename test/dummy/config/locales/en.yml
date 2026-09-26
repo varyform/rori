@@ -1,0 +1,41 @@
+en:
+  activerecord:
+    models:
+      note:
+        one: Note
+        other: Notes
+      folder:
+        one: Folder
+        other: Folders
+
+  rori:
+    commands:
+      # ⌘K entries. A parameterless GET route shows up once it has a label here.
+      routes:
+        notes:
+          index: Notes
+          new: New note
+          # Has a param, so it never becomes a command despite the label.
+          edit: Edit note
+      # Server-side commands (Rori.command in config/initializers/rori.rb).
+      custom:
+        recount_notes: Recount notes
+
+  recount_notes:
+    started: Recounting in the background. You'll be notified when it's done.
+    finished: Notes recounted
+    count:
+      one: 1 note
+      other: "%{count} notes"
+
+  notes:
+    index:
+      title: Notes
+    new:
+      title: New note
+    edit:
+      title: Edit note
+
+  folders:
+    show:
+      title: Folder
