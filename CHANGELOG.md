@@ -5,7 +5,7 @@ Notable changes to rori, newest first. Each entry names who it's for:
 it). History before the gem got its own repository lives in
 [rori-demo's changelog](https://github.com/varyform/rori-demo/blob/main/CHANGELOG.md).
 
-## Unreleased (0.1.0)
+## 0.1.0 (2026-09-26)
 
 The first release.
 

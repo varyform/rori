@@ -69,7 +69,7 @@ dependency; you never have to write a line of it.
 
 ```ruby
 # Gemfile
-gem "rori", github: "varyform/rori", branch: "main"
+gem "rori"
 ```
 
 ```sh
@@ -273,6 +273,7 @@ bundle exec rubocop
 bin/rails server          # the dummy app, for poking at the desk
 ```
 
-To work on the gem inside a real app, point Bundler at your checkout:
-`bundle config set --local local.rori /path/to/rori` (the app's Gemfile keeps
-the GitHub source). Releases: see `RELEASING.md`.
+To work on the gem inside a real app, use the GitHub source in the app's
+Gemfile (`gem "rori", github: "varyform/rori", branch: "main"`) and point
+Bundler at your checkout: `bundle config set --local local.rori /path/to/rori`.
+Releases: see `RELEASING.md`.
