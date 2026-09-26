@@ -8,6 +8,10 @@ drive the windows. Ghostty themes and Unsplash wallpapers included.
 
 A Rails engine (not isolated): it wraps the host's own controllers and views.
 
+See it wired into a small app in [rori-demo](https://github.com/varyform/rori-demo):
+configuration, window options on pages, a server-side command with a
+background job, and a Tauri macOS wrapper.
+
 ## Requirements
 
 Rails 8 with Propshaft, importmap, Turbo and Stimulus; HAML.
