@@ -6,11 +6,43 @@ drop-down terminal (`` ` ``) run one fuzzy-matched command tree; a keymap
 with a configurable modifier (⌘ in a native shell) and optional hover keys
 drive the windows. Ghostty themes and Unsplash wallpapers included.
 
+![A workspace with a users list, two users stacked in one column, and a service running off the right edge](docs/screenshots/desk.webp)
+
 A Rails engine (not isolated): it wraps the host's own controllers and views.
 
 See it wired into a small app in [rori-demo](https://github.com/varyform/rori-demo):
 configuration, window options on pages, a server-side command with a
 background job, and a Tauri macOS wrapper.
+
+## A tour
+
+**⌘K** matches whole paths through nested lists: `uthen` finds UI › Theme › Nord.
+
+![The command palette with "uthen" matching theme entries](docs/screenshots/palette.webp)
+
+**The terminal** (`` ` ``) runs the same commands as words, with Tab completion
+and history. Server-side commands can ask first and report back as
+notifications.
+
+![The drop-down terminal after a confirmed Reindex search, with its notification](docs/screenshots/terminal.webp)
+
+**Overview** (⌥O) zooms out to every workspace.
+
+![Overview of three workspaces](docs/screenshots/overview.webp)
+
+**Hover keys** (opt-in): point at an inactive window and bare keys act on it
+(`W` closes, `R` cycles its width, `⇧1–9` sends it to a workspace) while the
+cursor stays in the field you're typing in.
+
+![A window marked "keys → here" beside a form whose field has focus](docs/screenshots/hover-keys.webp)
+
+**Themes**: bundled Ghostty palettes, or your own theme files.
+
+![The same desk in Rosé Pine Dawn](docs/screenshots/theme-light.webp)
+
+**Every shortcut** in one place (⌥?), generated from the live keymap.
+
+![The keyboard shortcuts modal](docs/screenshots/shortcuts.webp)
 
 ## Requirements
 
