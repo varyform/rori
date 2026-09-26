@@ -16,7 +16,7 @@ Rails 8 with Propshaft, importmap, Turbo and Stimulus; HAML.
 
 ```ruby
 # Gemfile
-gem "rori", path: "gems/rori"
+gem "rori", github: "varyform/rori", branch: "main"
 
 # app/controllers/application_controller.rb — every page renders as a window
 class ApplicationController < ActionController::Base
