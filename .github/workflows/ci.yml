@@ -29,3 +29,24 @@ jobs:
           bundler-cache: true
 
       - run: bundle exec rake test
+
+  # The gem as it would be published: the gemspec builds, and only runtime
+  # files ship (no tests, dummy app, docs or CI config).
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - run: gem build rori.gemspec --output rori.gem
+
+      - name: Check the packaged files
+        run: |
+          files=$(tar -xOf rori.gem data.tar.gz | tar -tz)
+          echo "$files" | grep -qx lib/rori.rb
+          echo "$files" | grep -qx app/views/layouts/rori/shell.html.haml
+          echo "$files" | grep -qx LICENSE
+          ! echo "$files" | grep -E '^(test|docs|\.github|bin)/'
