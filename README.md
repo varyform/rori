@@ -1,6 +1,10 @@
 # Rori
 
 [![CI](https://github.com/varyform/rori/actions/workflows/ci.yml/badge.svg)](https://github.com/varyform/rori/actions/workflows/ci.yml)
+[![Gem Version](https://badge.fury.io/rb/rori.svg)](https://rubygems.org/gems/rori)
+
+**[Try the live demo →](https://rori.varyform.info)** (a desktop browser; it
+resets every night, so break anything you like)
 
 A niri-style window manager for Rails pages — a "desk" of windows. Every
 page opens as a window in endlessly scrolling column strips, one strip per workspace; ⌘K and a
